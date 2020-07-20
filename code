@@ -1,0 +1,40 @@
+#import relevant libraries
+import numpy as np
+import pandas as pd
+
+#load the data
+df = pd.read_csv('p_util_Data.csv')
+df
+
+#extract fuel type code and fuel cost per unit burned and save to a variable dff
+dff = df[['fuel_type_code_pudl','fuel_cost_per_unit_burned']]
+dff
+
+#groupby fuel type code and mean to find the lowest or highest
+dff.groupby(['fuel_type_code_pudl']).mean()
+
+#find out if there are any missing values/
+f.isnull().values.any()
+# returns true.
+
+#return a list of coulmns and their respective missing values.
+df.isnull().sum()
+
+#find the correlation between columns in the data
+df.corr()
+
+#extract report year and fuel cost per unit burned for further analysis. group by year, sum to find the cost per year.
+dff1 = df[['report_year','fuel_cost_per_unit_burned']]
+dff1
+
+dff1.groupby(['report_year']).sum()
+# extract report year and fuel cost per unit delivered and save to a variable for further analysis. sort by fuel cost per unit delivered in decending order to retrieve the highest value and the corresponding year.
+dff3 = df[['report_year','fuel_cost_per_unit_delivered']]
+dff3
+dff3.sort_values(by='fuel_cost_per_unit_delivered', ascending=False)
+answer = 1997
+
+#to find the skew
+df.skew(axis = 0, skipna = True) 
+# the above code returns the skew of all columns and i was able to pick out the one corresponding to fuel qty burned.
+
